@@ -20,13 +20,13 @@
 
 ## 最近同步
 
-- **最近同步日期**：2026-05-03
-- **本轮参考范围**：`f393805` -> `9701bb7`
+- **最近同步日期**：2026-05-07
+- **本轮参考范围**：`9701bb7` -> `d4b5cf5`
 - **本次同步内容**：
-  - 同步 Claude Code `v2.1.126` 相关教程变化，补充 `project purge`、`plugin prune`、headless `ultrareview`、MCP `alwaysLoad`、hooks `updatedToolOutput` 等说明
-  - 修正 memory 题库中已停用的 `# your rule` 快捷写法，改为 `/memory` 或自然语言记忆
-  - 修正 extended thinking 相关表述，避免把 `/think` 当成有效命令；保留 `ultrathink`、`/effort` 等可执行标识
-  - 不引入上游 `uk/`、`vi/` 等多语言目录改动，继续保持根目录中文主线
+  - 同步 Claude Code `v2.1.131` 相关教程变化，补充 `skillOverrides`、`/mcp` 工具数显示、plugin `.zip` / `--plugin-url`、`disableRemoteControl` 等说明
+  - 修正 gateway model discovery 口径：现在要显式设置 `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1`，不再只靠 `ANTHROPIC_BASE_URL`
+  - 补充 `/context` UI-only 可视化、`Ctrl+R` 搜索范围变化、`--channels` 支持 API key、以及新的 CLI 环境变量说明
+  - 继续保持中文默认入口，不引入上游英文根 README 或其他语言目录改动
 
 ---
 

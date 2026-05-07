@@ -2,6 +2,26 @@
 
 > 本文件保留上游版本信息的时间顺序，但用中文补充阅读说明，方便中文用户快速判断“这个仓库最近同步了什么”。
 
+## 中文版同步 — 2026-05-07
+
+### 上游审阅
+
+- 核对上游范围：`9701bb7` → `d4b5cf5`
+- 上游这轮重点：
+  - 同步 Claude Code `v2.1.131`
+  - 新增 `skillOverrides`、plugin `.zip` / `--plugin-url`、`disableRemoteControl`
+  - `/mcp` 增加工具数量显示和 `0 tools` 提示
+  - gateway model discovery 改成显式 opt-in，需要 `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1`
+  - `/context` 不再把 ASCII 可视化写进对话上下文，`Ctrl+R` 默认搜索所有项目 prompts，`--channels` 支持 API key
+
+### 中文 fork 处理
+
+- 将新增命令、设置项和行为变化改写成适合中文用户理解的说明
+- 保留所有 CLI flags、JSON key、环境变量和命令名原样
+- 修正上次关于 gateway model discovery 的口径，避免误导用户只设置 `ANTHROPIC_BASE_URL` 就能自动发现模型
+- 保持根目录中文默认入口，不引入上游英文 README 或其他语言目录改动
+- 更新 `README.md` 和 `UPSTREAM.md` 的最近同步记录
+
 ## 中文版同步 — 2026-05-03
 
 ### 上游审阅

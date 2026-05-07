@@ -5,7 +5,7 @@
 - 上游仓库：[`luongnv89/claude-howto`](https://github.com/luongnv89/claude-howto)
 - 上游分支：`main`
 - 本地化基线 commit：`0ca8c37c81918458e063739425c4740ca92c2db2`
-- 最近检查到的上游 commit：`9701bb74c20b2bd5959f025a7b6f04e5d86aab45`
+- 最近检查到的上游 commit：`d4b5cf56b4ae393971c5168536ba234741682c57`
 - 上游许可证：[MIT License](LICENSE)
 
 ## 本仓库性质
@@ -61,6 +61,21 @@ uv run python scripts/validate_localization.py
    - 哪些内容暂时未同步
 
 ## 最近一次同步记录
+
+### 上游同步 — 2026-05-07
+
+- Reviewed upstream range: `9701bb7` → `d4b5cf5`
+- 重点上游变化：
+  - Claude Code 教程覆盖更新到 `v2.1.131`
+  - 新增 `skillOverrides` 的更细粒度取值、`--plugin-url`、plugin `.zip` 加载、`disableRemoteControl`
+  - `/mcp` 会显示每个 server 的工具数并标记 `0 tools`
+  - gateway `/v1/models` 发现从默认开启改为显式 opt-in，需要 `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1`
+  - `/context` 不再把 ASCII 可视化写进对话上下文，`Ctrl+R` 默认搜索范围扩大到所有项目，`--channels` 支持 API key 认证
+- Chinese fork actions:
+  - 将会影响复制执行或配置理解的变更同步到中文主线文档
+  - 保留 `skillOverrides`、`/mcp`、`--plugin-url`、`disableRemoteControl`、`CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY` 等可执行标识原文
+  - 不引入上游英文根 README 或其他语言目录改动，继续维护 `lhfer/claude-howto-zh-cn` 的中文默认入口
+  - 更新 `README.md`、`UPSTREAM.md` 和 `CHANGELOG.md` 的最近同步记录
 
 ### 上游同步 — 2026-05-03
 

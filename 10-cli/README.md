@@ -150,7 +150,7 @@ claude --append-system-prompt "Always explain tradeoffs" "review this plan"
 - Windows 侧正在逐步拿到更专门的 PowerShell tool
 - 主题里新增了更贴近终端外观的 Auto 模式
 - 只读型 Bash / Glob 调用的权限提示比以前更安静
-- `ANTHROPIC_BASE_URL` 指向兼容网关时，`/model` 会从网关 `/v1/models` 拉模型列表
+- `ANTHROPIC_BASE_URL` 指向兼容网关时，`/model` 不再默认自动发现远端模型；现在需要显式设置 `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1`
 - `claude auth login` 在浏览器 callback 打不回 localhost 时，可以把 OAuth code 粘回终端继续登录
 
 ---
@@ -362,8 +362,21 @@ claude ultrareview 1234 --json > review.json
 |----------|------|
 | `ANTHROPIC_BEDROCK_SERVICE_TIER` | 在 Bedrock 上选择服务档位：`default`、`flex` 或 `priority` |
 | `AI_AGENT` | Claude Code 启动子进程时自动设置，方便外部 CLI（例如 `gh`）识别调用来源 |
+| `CLAUDE_CODE_FORCE_SYNC_OUTPUT` | 在终端能力自动检测失误时强制同步输出，例如 Emacs `eat` |
+| `CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE` | 为 Homebrew / WinGet 安装启用后台升级 |
+| `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY` | 在设置了 `ANTHROPIC_BASE_URL` 时，显式开启 `/v1/models` 网关发现 |
 
 这些名字属于可执行标识，不要翻译。
+
+### Gateway model discovery 现在是显式 opt-in
+
+这点和我们上次同步相比有一个重要变化：
+
+- 旧口径：只要设置了 `ANTHROPIC_BASE_URL`，`/model` 就会从网关 `/v1/models` 拉模型列表
+- 新口径：从 `v2.1.129` 起，必须再额外设置 `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1`
+
+如果不加这个环境变量，`/model` 会退回到内置静态模型列表。
+这个改动是为了避免网关返回你理论上看得见、实际上没权限用的模型。
 
 ---
 
