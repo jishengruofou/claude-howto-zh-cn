@@ -5,7 +5,7 @@
 - 上游仓库：[`luongnv89/claude-howto`](https://github.com/luongnv89/claude-howto)
 - 上游分支：`main`
 - 本地化基线 commit：`0ca8c37c81918458e063739425c4740ca92c2db2`
-- 最近检查到的上游 commit：`553a31993417ecbeacccb55a2564d9d54130ba11`
+- 最近检查到的上游 commit：`3557d791f54e916fe30750afb9866b3642a665bd`
 - 上游许可证：[MIT License](LICENSE)
 
 ## 本仓库性质
@@ -61,6 +61,21 @@ uv run python scripts/validate_localization.py
    - 哪些内容暂时未同步
 
 ## 最近一次同步记录
+
+### 上游同步 — 2026-05-16
+
+- Reviewed upstream range: `553a319` → `3557d79`
+- 重点上游变化：
+  - 新增 `scripts/build_website.py`，可从 Markdown 生成静态网站
+  - 新增 `scripts/vendor_assets.py` 与 `scripts/website_templates/`，用于自托管 Tailwind、Mermaid、字体和页面模板
+  - 新增 `scripts/tests/test_build_website.py`
+  - 新增 `.github/workflows/pages.yml`，支持 GitHub Pages 自动构建与发布
+  - `scripts/requirements.txt` / `scripts/pyproject.toml` 增加 `jinja2` 依赖，`.gitignore` 增加 `site/` 与 `scripts/.vendor-cache/`
+- Chinese fork actions:
+  - 将静态网站生成器、依赖、模板、测试和 Pages workflow 同步到中文仓库
+  - 用中文补充 `scripts/README.md` 的网站构建与部署说明，保留 CLI、路径和模板文件名等可执行标识原文
+  - 实际运行新加的网站构建测试，并在整套脚本测试中确认通过
+  - 更新 `README.md`、`UPSTREAM.md` 和 `CHANGELOG.md` 的最近同步记录
 
 ### 上游同步 — 2026-05-12
 

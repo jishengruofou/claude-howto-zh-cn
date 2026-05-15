@@ -2,6 +2,26 @@
 
 > 本文件保留上游版本信息的时间顺序，但用中文补充阅读说明，方便中文用户快速判断“这个仓库最近同步了什么”。
 
+## 中文版同步 — 2026-05-16
+
+### 上游审阅
+
+- 核对上游范围：`553a319` → `3557d79`
+- 上游这轮重点：
+  - 新增 `scripts/build_website.py`
+  - 新增 `scripts/vendor_assets.py`
+  - 新增 `scripts/website_templates/` 页面模板与样式
+  - 新增 `scripts/tests/test_build_website.py`
+  - 新增 `.github/workflows/pages.yml`
+
+### 中文 fork 处理
+
+- 将静态网站生成器、依赖、模板、测试和 GitHub Pages workflow 同步进中文仓库
+- 用中文补充 `scripts/README.md` 的网站构建、预览和 Pages 部署说明
+- 实际跑通网站构建测试、Markdown 渲染校验、本地化校验、交叉引用检查和整套脚本测试
+- 保持根目录中文默认入口，不引入上游其他语言目录改动
+- 更新 `README.md` 和 `UPSTREAM.md` 的最近同步记录
+
 ## 中文版同步 — 2026-05-12
 
 ### 上游审阅

@@ -3,11 +3,12 @@
   <img alt="Claude How To" src="../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# EPUB 构建脚本与本地化校验脚本
+# EPUB / 网站构建脚本与本地化校验脚本
 
-这个目录现在主要包含两类脚本：
+这个目录现在主要包含三类脚本：
 
 - `build_epub.py`：把仓库内的 Markdown 文档打包成 EPUB
+- `build_website.py`：把同一套 Markdown 文档生成静态网站
 - `validate_localization.py`：校验中文本土化过程中是否把可执行标识、链接或配置翻坏
 
 ---
@@ -131,3 +132,67 @@ python scripts/build_epub.py
 
 **中文内容导致拼写检查报错**  
 仓库已对中文字符做了忽略处理；如果仍然报错，多半是英文术语或项目名新增了未收录词条。
+
+---
+
+## `build_website.py`
+
+用于把同一套 Markdown 源文档生成一个适合直接部署的静态网站。
+
+它和 `build_epub.py` 的关系可以简单理解为：
+
+- EPUB：面向离线阅读 / 打包分发
+- Website：面向浏览器访问 / GitHub Pages 部署
+
+两者都把 `.md` 作为唯一内容源，改完 Markdown 后重新运行脚本即可。
+
+### 功能
+
+- 为每个 Markdown 页面生成对应 HTML
+- 把内部 `.md` 链接自动重写成站点内的 `.html`
+- 把脚本、JSON、配置等非 Markdown 文件链接重写成 GitHub 源码链接
+- 自托管 Mermaid、Tailwind、Inter、JetBrains Mono 等前端资源，不依赖运行时 CDN
+- 适合直接部署到 GitHub Pages
+
+### 快速开始
+
+```bash
+# 生成英文站点到 ./site/
+uv run scripts/build_website.py
+
+# 本地预览
+python -m http.server --directory site 8080
+```
+
+然后浏览器打开 `http://localhost:8080`。
+
+### 常见选项
+
+```text
+usage: build_website.py [-h] [--root ROOT] [--output OUTPUT]
+                        [--lang {en,vi,zh,ja,uk}] [--repo-url REPO_URL]
+                        [--branch BRANCH] [--verbose]
+```
+
+### GitHub Pages 部署
+
+仓库会额外提供 `.github/workflows/pages.yml`：
+
+- 当 Markdown 或网站生成脚本变更时自动构建
+- 把输出目录 `site/` 发布到 GitHub Pages
+
+如果你要在自己的中文 fork 上启用它，需要在仓库设置里把 GitHub Pages 的 Source 切到 **GitHub Actions**。
+
+### 依赖和缓存
+
+网站构建依赖：
+
+- `jinja2`
+- `markdown`
+- `beautifulsoup4`
+
+首次构建时还会把 Tailwind CLI、Mermaid、字体文件下载到：
+
+`scripts/.vendor-cache/`
+
+这个目录已经加入 `.gitignore`，不会污染仓库提交历史。
