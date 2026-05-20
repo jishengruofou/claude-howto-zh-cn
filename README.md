@@ -21,12 +21,11 @@
 ## 最近同步
 
 - **最近同步日期**：2026-05-20
-- **本轮参考范围**：`3557d79` -> `30d5ad5`
+- **本轮参考范围**：`30d5ad5` -> `7e369ee`
 - **本次同步内容**：
-  - 同步 Claude Code `v2.1.143` 相关教程变化，补充 `/goal`、`/scroll-speed`、Agent View、plugin details、hooks `args` / `continueOnBlock` / `terminalSequence` 等说明
-  - 补充 API key 会静默禁用 Remote Control / `/schedule` / claude.ai connectors 的限制，以及 Windows PowerShell tool 默认行为变化
-  - 更新 hooks 事件总数口径、Fast Mode 默认模型说明和若干环境变量说明
-  - 保持中文默认入口不变，不引入上游英文根 README 或其他语言目录改动
+  - 审阅上游多语言目录的 logo 相对路径修正，确认修复点只影响 `ja/`、`uk/`、`vi/`、`zh/` 子目录 README
+  - 中文 fork 的根目录主线与模块入口原本就使用正确的 `../resources/` 路径，因此无需正文改动
+  - 仅更新同步记录，保持根目录中文默认入口和现有教程结构不变
 
 ---
 

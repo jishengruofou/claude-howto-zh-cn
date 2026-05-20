@@ -5,7 +5,7 @@
 - 上游仓库：[`luongnv89/claude-howto`](https://github.com/luongnv89/claude-howto)
 - 上游分支：`main`
 - 本地化基线 commit：`0ca8c37c81918458e063739425c4740ca92c2db2`
-- 最近检查到的上游 commit：`30d5ad52bc5d0ecac24a5250ca812213566d47a0`
+- 最近检查到的上游 commit：`7e369eefcb6f3a2bcf24c5ac40cd0c7517851108`
 - 上游许可证：[MIT License](LICENSE)
 
 ## 本仓库性质
@@ -61,6 +61,17 @@ uv run python scripts/validate_localization.py
    - 哪些内容暂时未同步
 
 ## 最近一次同步记录
+
+### 上游同步 — 2026-05-20（补充）
+
+- Reviewed upstream range: `30d5ad5` → `7e369ee`
+- 重点上游变化：
+  - 修正 `ja/`、`uk/`、`vi/`、`zh/` 多语言模块 README 的 logo 相对路径
+  - 变更集中在多语言子目录，不涉及英文根主线文档内容
+- Chinese fork actions:
+  - 审阅后确认本中文 fork 采用根目录中文主线，现有根目录与模块 README 路径本身正确
+  - 不引入上游其他语言子目录改动，避免在本 fork 中维护额外多语言树
+  - 仅更新 `README.md`、`UPSTREAM.md` 和 `CHANGELOG.md` 的同步记录
 
 ### 上游同步 — 2026-05-20
 
