@@ -31,6 +31,9 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v4
 
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
       - name: Build website
         run: uv run scripts/build_website.py --verbose
 
@@ -50,3 +53,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify published homepage
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          test -n "$PAGE_URL"
+          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 --retry-connrefused "$PAGE_URL" --output /tmp/homepage.html
+          grep -F "Claude Code 中文全面上手指南" /tmp/homepage.html
